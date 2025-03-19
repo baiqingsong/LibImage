@@ -1,7 +1,7 @@
 # LibImage
  图片的相关处理
 
-#### LImageUtil
+#### ImageFactory
 图片处理工具类
 
 * showImage 显示图片

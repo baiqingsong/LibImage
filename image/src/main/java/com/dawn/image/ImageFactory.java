@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 //import com.arthenica.mobileffmpeg.FFmpeg;
 
-public class LImageUtil {
+public class ImageFactory {
     /**
      * 显示图片
      * @param imageUrl 图片地址
