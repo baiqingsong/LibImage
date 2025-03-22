@@ -67,8 +67,26 @@ public class LImageUtil {
         }
     }
 
-    public static void cropImage(){
+    /**
+     * Crop an image using FFmpeg
+     * @param inputPath Path to the input image
+     * @param outputPath Path to save the cropped image
+     * @param top Margin from the top
+     * @param bottom Margin from the bottom
+     * @param left Margin from the left
+     * @param right Margin from the right
+     */
+    public static void cropImage(String inputPath, String outputPath, int top, int bottom, int left, int right) {
+        String command = String.format("-i %s -vf crop=in_w-%d-%d:in_h-%d-%d:%d:%d %s", inputPath, left, right, top, bottom, left, top, outputPath);
+        int rc = FFmpeg.execute(command);
 
+        if (rc == Config.RETURN_CODE_SUCCESS) {
+            Log.i("FFmpeg", "Cropping successful");
+        } else if (rc == Config.RETURN_CODE_CANCEL) {
+            Log.i("FFmpeg", "Cropping cancelled");
+        } else {
+            Log.i("FFmpeg", String.format("Cropping failed with rc=%d", rc));
+        }
     }
 
     /**

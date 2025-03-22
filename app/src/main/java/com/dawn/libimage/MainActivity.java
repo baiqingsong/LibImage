@@ -20,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
         File sdCard = Environment.getExternalStorageDirectory();
         String output = sdCard.getAbsolutePath() + "/image/output.png";
         String input = sdCard.getAbsolutePath() + "/image/input.png";
-        String output2 = sdCard.getAbsolutePath() + "/image/output4.png";
+        String output2 = sdCard.getAbsolutePath() + "/image/output5.png";
         Log.i("dawn", "output: " + output);
         try{
 //            LImageUtil.copyDrawableToSDCard(this, R.drawable.pic1844x1240, "input.png");
 //            LImageUtil.compressImage(this, input, output, 100);
-            LImageUtil.compressImage(input, output2, 800, -1);
+//            LImageUtil.compressImage(input, output2, 800, -1);
+            LImageUtil.cropImage(input, output2, 100, 100, 100, 100);
             ImageView imageView = findViewById(R.id.imageView);
             LImageUtil.showImage(output2, imageView);
         }catch (Exception e){
