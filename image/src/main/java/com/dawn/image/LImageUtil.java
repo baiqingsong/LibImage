@@ -128,6 +128,8 @@ public class LImageUtil {
     public static void saveBitmapToFile(Bitmap bitmap, File file, Bitmap.CompressFormat format, int quality) throws IOException {
         FileOutputStream out = null;
         try {
+            if(!file.exists())
+                file.createNewFile();
             out = new FileOutputStream(file);
             bitmap.compress(format, quality, out);
         } finally {
