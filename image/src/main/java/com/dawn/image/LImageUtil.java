@@ -117,4 +117,36 @@ public class LImageUtil {
         inputStream.close();
     }
 
+    /**
+     * 保存Bitmap到文件
+     * @param bitmap Bitmap
+     * @param file 文件
+     * @param format 格式
+     * @param quality 质量
+     * @throws IOException IO异常
+     */
+    public static void saveBitmapToFile(Bitmap bitmap, File file, Bitmap.CompressFormat format, int quality) throws IOException {
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(file);
+            bitmap.compress(format, quality, out);
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+        }
+    }
+
+    /**
+     * 保存Bitmap到文件
+     * @param bitmap 图片
+     * @param filePath 文件路径
+     * @param format 格式
+     * @param quality 质量
+     * @throws IOException IO异常
+     */
+    public static void saveBitmapToFile(Bitmap bitmap, String filePath, Bitmap.CompressFormat format, int quality) throws IOException {
+        saveBitmapToFile(bitmap, new File(filePath), format, quality);
+    }
+
 }
